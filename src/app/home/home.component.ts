@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SocialLogin } from 'nativescript-social-login';
 
 @Component({
   selector: 'app-home',
@@ -11,5 +12,12 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  login(){
+    const sl = new SocialLogin();
+    sl.init();
+    console.log('click!');
+    console.log(sl.greet());
   }
 }

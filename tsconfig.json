@@ -3,17 +3,15 @@
   "compilerOptions": {
       "outDir": "./dist/out-tsc",
       "module": "ESNext",
-      "target": "es2015",
+      "target": "es2017",
       "moduleResolution": "node",
       "sourceMap": true,
-      "declaration": false,
+      "declaration": true,
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
-      "noEmitHelpers": true,
-      "noEmitOnError": true,
       "skipLibCheck": true,
       "lib": [
-          "es2017",
+          "es2018",
           "dom",
           "es6"
       ],
