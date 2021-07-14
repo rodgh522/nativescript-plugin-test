@@ -8,16 +8,18 @@ import { SocialLogin } from 'nativescript-social-login';
 })
 export class HomeComponent implements OnInit {
   title = 'test';
+  social = new SocialLogin();
 
   constructor() { }
 
   ngOnInit() {
+    this.social.init();
   }
 
   login(){
-    const sl = new SocialLogin();
-    sl.init();
     console.log('click!');
-    console.log(sl.greet());
+    this.social.login((a)=> {
+      console.log(a);
+    });
   }
 }
