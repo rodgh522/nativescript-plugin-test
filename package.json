@@ -28,7 +28,7 @@
     "@nativescript/core": "~8.0.0",
     "@nativescript/theme": "~3.0.0",
     "core-js": "^3.8.0",
-    "nativescript-social-login": "https://github.com/rodgh522/nativescript-google-login.git",
+    "nativescript-google-login": "file:../nativescript-google-login",
     "reflect-metadata": "~0.1.12",
     "rxjs": "~6.6.0",
     "tslib": "~2.0.0",

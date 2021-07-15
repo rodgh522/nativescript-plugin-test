@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SocialLogin } from 'nativescript-social-login';
-
+import { SocialLogin } from 'nativescript-google-login';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,18 +7,24 @@ import { SocialLogin } from 'nativescript-social-login';
 })
 export class HomeComponent implements OnInit {
   title = 'test';
-  social = new SocialLogin();
-
+  googleLogin = new SocialLogin();
   constructor() { }
 
   ngOnInit() {
-    this.social.init();
+  }
+  
+  login(){
+    const option = {
+      clientId: '76787911109-6cmpq8uv9uqhtnbgv9s87kvlq2lkbukv.apps.googleusercontent.com',
+      callback: this.loginResult
+    }
+    this.googleLogin.init(option);
+    console.log('click!');
   }
 
-  login(){
-    console.log('click!');
-    this.social.login((a)=> {
-      console.log(a);
-    });
+  loginResult(user, error){
+    console.log('user=> ' + user.grantedScopes, user.userID, user.openIDRealm);
+
+    console.log('err=> ' + error);
   }
 }
