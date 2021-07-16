@@ -8,23 +8,32 @@ import { SocialLogin } from 'nativescript-google-login';
 export class HomeComponent implements OnInit {
   title = 'test';
   googleLogin = new SocialLogin();
+  option = {
+    clientId: '76787911109-6cmpq8uv9uqhtnbgv9s87kvlq2lkbukv.apps.googleusercontent.com',
+    callback: this.loginResult
+  }
   constructor() { }
 
   ngOnInit() {
+    this.googleLogin.init(this.option);
+    console.log(this.option);
   }
   
   login(){
-    const option = {
-      clientId: '76787911109-6cmpq8uv9uqhtnbgv9s87kvlq2lkbukv.apps.googleusercontent.com',
-      callback: this.loginResult
-    }
-    this.googleLogin.init(option);
+    this.googleLogin.login(this.loginResult);
     console.log('click!');
   }
 
   loginResult(user, error){
-    console.log('user=> ' + user.grantedScopes, user.userID, user.openIDRealm);
-
+    if(user){
+      console.log('user=> ' + user.grantedScopes, user.userID, user.profile.email);
+    }
     console.log('err=> ' + error);
+  }
+
+  logout(){
+    this.googleLogin.logout();
+    console.log('logout!');
+    
   }
 }
