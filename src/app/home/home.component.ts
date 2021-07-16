@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SocialLogin } from 'nativescript-social-login';
+import { SocialLogin } from 'nativescript-google-login';
+import { isIOS } from '@nativescript/core';
 
 @Component({
   selector: 'app-home',
@@ -8,17 +9,19 @@ import { SocialLogin } from 'nativescript-social-login';
 })
 export class HomeComponent implements OnInit {
   title = 'test';
-  social = new SocialLogin();
+  googleLogin = new SocialLogin();
 
   constructor() { }
 
   ngOnInit() {
-    this.social.init();
+    if(isIOS){
+      this.googleLogin.init();
+    }
   }
 
   login(){
     console.log('click!');
-    this.social.login((a)=> {
+    this.googleLogin.login((a)=> {
       console.log(a);
     });
   }
